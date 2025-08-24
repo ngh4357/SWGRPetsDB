@@ -258,7 +258,10 @@ DROP TABLE IF EXISTS `mutation_outcome`;
 CREATE TABLE `mutation_outcome` (
   `mut_id` int NOT NULL AUTO_INCREMENT,
   `mut_name` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`mut_id`)
+  `pet_id` int DEFAULT NULL,
+  PRIMARY KEY (`mut_id`),
+  KEY `fk_mutationoutcome_pid_idx` (`pet_id`),
+  CONSTRAINT `fk_mutationoutcome_pid` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`p_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -432,4 +435,4 @@ CREATE TABLE `specials` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-23 21:01:50
+-- Dump completed on 2025-08-24 16:53:17
